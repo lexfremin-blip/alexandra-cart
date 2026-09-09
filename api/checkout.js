@@ -21,7 +21,6 @@ module.exports = async (req, res) => {
       return res.status(400).json({ error: 'Panier vide' });
     }
 
-    // Vérifier que tous les price IDs sont autorisés
     for (const item of items) {
       if (!ALLOWED_PRICE_IDS.includes(item.price)) {
         return res.status(400).json({ error: 'Produit non autorisé' });
