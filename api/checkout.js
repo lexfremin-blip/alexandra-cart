@@ -37,10 +37,18 @@ module.exports = async (req, res) => {
       success_url: 'https://alexandranine.fr?commande=ok',
       cancel_url: 'https://alexandranine.fr?commande=annulee',
       shipping_address_collection: {
-        allowed_countries: ['FR', 'BE', 'CH', 'LU', 'MC'],
+        allowed_countries: ['FR', 'BE', 'LU'],
       },
       shipping_options: [
         { shipping_rate: 'shr_1UDnMgPnhmITZHrYo2xdw83g' },
+      ],
+      custom_fields: [
+        {
+          key: 'dedicace',
+          label: { type: 'custom', custom: 'Prénom pour la dédicace (optionnel)' },
+          type: 'text',
+          optional: true,
+        },
       ],
       locale: 'fr',
     });
