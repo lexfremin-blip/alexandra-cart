@@ -1,9 +1,9 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const ALLOWED_PRICE_IDS = [
-  'price_1T4QrwPnhmITZHrYOTUF1PPL', // La vie en couleur
-  'price_1T4QsKPnhmITZHrYtmVRJjte', // Et même après
-  'price_1UDkorPnhmITZHrYNPIjBxSD', // Tout ce que l'amour n'est pas
+  'price_1T4QrwPnhmITZHrYOTUF1PPL',
+  'price_1T4QsKPnhmITZHrYtmVRJjte',
+  'price_1UDkorPnhmITZHrYNPIjBxSD',
 ];
 
 module.exports = async (req, res) => {
@@ -36,6 +36,7 @@ module.exports = async (req, res) => {
       mode: 'payment',
       success_url: 'https://alexandranine.fr?commande=ok',
       cancel_url: 'https://alexandranine.fr?commande=annulee',
+      phone_number_collection: { enabled: true },
       shipping_address_collection: {
         allowed_countries: ['FR', 'BE', 'LU'],
       },
